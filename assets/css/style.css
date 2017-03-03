@@ -9,16 +9,19 @@ header {
 	padding: 20px;
 	margin-bottom: 10px;
 	border-bottom: solid black thick;
+	font-family: 'Keania One', cursive;
 }
 
 header, .panel-default {
 	background: url(../images/topography.png);
 }
 
-#header-text {}
-
 .giphy {
 	margin: 5px;
+}
+
+.panel-heading {
+	font-family: 'Keania One', cursive;
 }
 
 #user-input {

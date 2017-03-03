@@ -17,7 +17,7 @@ window.onload = init;
 
 function init() {
 	//initialize variables
-	topics = ['cat','dog','horse','fish','bird','snake','cow','shark','parrot'];
+	topics = ['cat','dog','horse','fish','bird','snake','cow','shark','parrot','ostrich'];
 	generateButtons(topics);
 }
 
