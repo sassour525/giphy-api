@@ -23,6 +23,16 @@ header, .panel-default {
 	margin: 5px;
 }
 
+#header-info {
+	padding-top: 10px;
+	font-size: 12pt;
+}
+
+#display-panel-info {
+	padding-top: 10px;
+	font-size: 10pt;
+}
+
 /*style for panel headings*/
 .panel-heading {
 	font-family: 'Keania One', cursive;
