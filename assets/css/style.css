@@ -3,6 +3,7 @@ html, body {
 	background: url(../images/debut_dark.png)
 }
 
+/*style header*/
 header {
 	font-size: 40pt;
 	margin-top: auto;
@@ -12,41 +13,51 @@ header {
 	font-family: 'Keania One', cursive;
 }
 
+/*set background img for header and panels*/
 header, .panel-default {
 	background: url(../images/topography.png);
 }
 
+/*style for gif images in the panel*/
 .giphy {
 	margin: 5px;
 }
 
+/*style for panel headings*/
 .panel-heading {
 	font-family: 'Keania One', cursive;
 }
 
+/*style for input*/
 #user-input {
 	width: 100%;
 	margin-bottom: 10px;
 	height: 30px;
 }
+
+/*style for search buttons*/
 .btn {
 	width: 150px;
 }
 
+/*style for submit button*/
 .btn-input {
 	width: 100%;
 }
 
+/*style for divs created from API call*/
 .gif-response {
 	display: inline-block;
 }
 
+/*style for gif rating txt*/
 .gif-rating {
 	position: relative;
 	display: block;
 	margin-left: 10px;
 }
 
+/*style for each gif img displayed*/
 .gif-img {
 	margin: 10px;
 }

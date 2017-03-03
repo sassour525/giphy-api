@@ -7,13 +7,14 @@ var gifDiv; //div element to hold each gif img tag
 var gifImage; //image tag to hold each gif returned from the API
 var state; //state of the gif image (still or animated)
 var userInput; //store user input for new button
+var gifRating; //store gif rating info
 
 // have an array with words that will be buttons used to search giphy
 // have input box and submit button to grab user input to create a button and submit it
 // pull 10 static images from API and display them
 // if user clicks a gif it will start to animate
 
-window.onload = init;
+window.onload = init; //call init on page load
 
 function init() {
 	//initialize variables
@@ -38,14 +39,17 @@ function animateGif() {
 function generateButtons(topics) {
 	//generate inital buttons for display
 	$('#gif-buttons').empty();
-	for (var i = 0; i < topics.length; i++) {
-		//take topics array and create initial list of buttons
-		gifButton = $('<button>').html(topics[i]);
-		gifButton.attr('class', 'btn btn-info giphy');
-		gifButton.attr('value', topics[i]);
-		$('#gif-buttons').append(gifButton);
+	if (topics && topics.length > 0) {
+		for (var i = 0; i < topics.length; i++) {
+			//take topics array and create initial list of buttons
+			gifButton = $('<button>').html(topics[i]);
+			gifButton.attr('class', 'btn btn-info giphy');
+			gifButton.attr('value', topics[i]);
+			$('#gif-buttons').append(gifButton);
+		}
 	}
 	$('.giphy').on('click', function(){
+		//when gif button is clicked clear current gifs and pass value from button to build next API call
 		$('#gif-display').html('');
 		displayGifs(this.value);
 	});
@@ -65,30 +69,34 @@ function displayGifs(choice) {
 	key = 'dc6zaTOxFJmzC';
 	queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + choice + '&limit=10&fmt=json&rating=pg&rating=g&rating=y&api_key=' + key;
 	$.ajax({
+		// ajax call to giphy api to grab gif images to be displayed
 		url: queryURL,
 		query: 'GET'
 	}).done(function(response) {
 		console.log(response);
-		for (var i = 0; i < response.data.length; i++) {
-			gifDiv = $('<div>');
-			gifDiv.addClass('gif-response');
+		if (response.data && response.data.length > 0) {
+			for (var i = 0; i < response.data.length; i++) {
+				//for each entry API return create a div and append them to display on page
+				gifDiv = $('<div>');
+				gifDiv.addClass('gif-response');
 
-			var gifRating = $('<span>');
-			gifRating.attr('class', 'gif-rating');
-			gifRating.html('Rating: ' + response.data[i].rating);
+				gifRating = $('<span>');
+				gifRating.attr('class', 'gif-rating');
+				gifRating.html('Rating: ' + response.data[i].rating);
 
-			gifImage = $('<img>');
-			gifImage.addClass('gif-img');
-			gifImage.attr('still-url', response.data[i].images.fixed_height_still.url); //grab still image url
-			gifImage.attr('animated-url', response.data[i].images.fixed_height.url); //grab animated image url
-			gifImage.attr('state', 'still'); //set state attribute
-			gifImage.attr('src', response.data[i].images.fixed_height_still.url); //initial img will be still
+				gifImage = $('<img>');
+				gifImage.addClass('gif-img');
+				gifImage.attr('still-url', response.data[i].images.fixed_height_still.url); //grab still image url
+				gifImage.attr('animated-url', response.data[i].images.fixed_height.url); //grab animated image url
+				gifImage.attr('state', 'still'); //set state attribute
+				gifImage.attr('src', response.data[i].images.fixed_height_still.url); //initial img will be still
 
-			gifDiv.append(gifRating);
-			gifDiv.append(gifImage);
-
-			$('#gif-display').append(gifDiv);
+				gifDiv.append(gifRating);
+				gifDiv.append(gifImage);
+				// append all gifs to div element to display on page
+				$('#gif-display').append(gifDiv);
+			}
 		}
-		animateGif();
+		animateGif(); //call animate gif to toggle animated version of still version
 	});
 }
