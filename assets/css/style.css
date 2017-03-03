@@ -1,5 +1,6 @@
 html, body {
 	margin: 0 auto;
+	background: url(../images/debut_dark.png)
 }
 
 header {
@@ -8,6 +9,10 @@ header {
 	padding: 20px;
 	margin-bottom: 10px;
 	border-bottom: solid black thick;
+}
+
+header, .panel-default {
+	background: url(../images/topography.png);
 }
 
 #header-text {}
@@ -29,9 +34,16 @@ header {
 	width: 100%;
 }
 
+.gif-response {
+	display: inline-block;
+}
 
-/*#gif-display, #create-button {
-	border: thick black solid;
-}*/
+.gif-rating {
+	position: relative;
+	display: block;
+	margin-left: 10px;
+}
 
-
+.gif-img {
+	margin: 10px;
+}
