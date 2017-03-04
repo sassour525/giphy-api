@@ -9,11 +9,6 @@ var state; //state of the gif image (still or animated)
 var userInput; //store user input for new button
 var gifRating; //store gif rating info
 
-// have an array with words that will be buttons used to search giphy
-// have input box and submit button to grab user input to create a button and submit it
-// pull 10 static images from API and display them
-// if user clicks a gif it will start to animate
-
 window.onload = init; //call init on page load
 
 function init() {
