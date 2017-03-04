@@ -67,7 +67,7 @@ function createNewButton() {
 function displayGifs(choice) {
 	//use AJAX call to grab gif images from API and display on the page
 	key = 'dc6zaTOxFJmzC';
-	queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + choice + '&limit=10&fmt=json&api_key=' + key;
+	queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + choice + '&limit=10&fmt=json&api_key=' + key;
 	$.ajax({
 		// ajax call to giphy api to grab gif images to be displayed
 		url: queryURL,
